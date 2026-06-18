@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transactions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+          </svg>
+        </div>
+        <div>
+          <h1>Transactions</h1>
+          <p class="subtitle">Track credits, debits, and your running balance</p>
+        </div>
+      </div>
+      <a class="api-link" href="/docs" target="_blank" rel="noopener">API Docs</a>
+    </header>
+
+    <section class="stats">
+      <article class="stat-card balance-card">
+        <span class="stat-label">Current Balance</span>
+        <p class="stat-value" id="balance-value">—</p>
+        <span class="stat-meta" id="balance-meta">Loading…</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Total Credits</span>
+        <p class="stat-value credit" id="credits-value">—</p>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Total Debits</span>
+        <p class="stat-value debit" id="debits-value">—</p>
+      </article>
+    </section>
+
+    <div class="layout">
+      <section class="panel form-panel">
+        <h2>New Transaction</h2>
+        <form id="transaction-form" novalidate>
+          <div class="field">
+            <label for="amount">Amount</label>
+            <div class="input-wrap">
+              <span class="prefix">$</span>
+              <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Type</label>
+            <div class="type-toggle" role="radiogroup" aria-label="Transaction type">
+              <label class="type-option">
+                <input type="radio" name="type" value="credit" checked />
+                <span>Credit</span>
+              </label>
+              <label class="type-option">
+                <input type="radio" name="type" value="debit" />
+                <span>Debit</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="description">Description</label>
+            <input id="description" name="description" type="text" placeholder="e.g. Salary, Groceries…" maxlength="120" />
+          </div>
+
+          <p class="form-error" id="form-error" hidden></p>
+
+          <button type="submit" class="btn-primary" id="submit-btn">
+            <span>Add Transaction</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-header">
+          <h2>All Transactions</h2>
+          <button type="button" class="btn-ghost" id="refresh-btn" title="Refresh">Refresh</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="transactions-body">
+              <tr class="loading-row">
+                <td colspan="5">Loading transactions…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="empty-state" id="empty-state" hidden>No transactions yet. Add your first one above.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
