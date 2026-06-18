@@ -1,0 +1,13 @@
+{
+  "name": "fraud-score-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Polls the FastAPI service, scores pending transactions via the Rust engine.",
+  "main": "worker.js",
+  "scripts": {
+    "start": "node worker.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
