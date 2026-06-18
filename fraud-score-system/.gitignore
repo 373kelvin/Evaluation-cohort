@@ -1,0 +1,20 @@
+# Rust
+/engine/target/
+target/
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Runtime logs from the demo notebook
+service.log
+worker.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
