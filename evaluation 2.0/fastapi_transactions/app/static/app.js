@@ -26,6 +26,14 @@ const dateFmt = new Intl.DateTimeFormat("en-US", {
 
 let toastTimer;
 
+/** Works at / (local) and /services/tx/ (nginx prefix on Railway). */
+function apiUrl(path) {
+  const base = window.location.pathname.endsWith("/")
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
+  return base + path.replace(/^\//, "");
+}
+
 function showToast(message, type = "success") {
   clearTimeout(toastTimer);
   toast.textContent = message;
@@ -98,8 +106,8 @@ function escapeHtml(str) {
 async function loadData() {
   try {
     const [balance, transactions] = await Promise.all([
-      fetchJSON("/balance"),
-      fetchJSON("/transactions"),
+      fetchJSON(apiUrl("balance")),
+      fetchJSON(apiUrl("transactions")),
     ]);
 
     balanceValue.textContent = currency.format(balance.balance);
@@ -130,7 +138,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
 
   try {
-    await fetchJSON("/transactions", {
+    await fetchJSON(apiUrl("transactions"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
