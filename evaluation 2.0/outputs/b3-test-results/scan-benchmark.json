@@ -1,0 +1,112 @@
+[
+  {
+    "label": "Local \u00b7 Fintech demo",
+    "source": "/Users/prathamsumitchowdhury/Desktop/DATA_IQ_PROJECT_PLACEHOLDER/fraud-detection/Evaluation-cohort/evaluation 2.0/sample-projects/fintech-platform",
+    "features": 12,
+    "tables": 5,
+    "files": 9,
+    "stack": "Python / FastAPI",
+    "verdict": "Python web service / API",
+    "pass": true,
+    "notes": "SQL + FastAPI + Express"
+  },
+  {
+    "label": "Local \u00b7 FastAPI transactions",
+    "source": "/Users/prathamsumitchowdhury/Desktop/DATA_IQ_PROJECT_PLACEHOLDER/fraud-detection/Evaluation-cohort/evaluation 2.0/fastapi_transactions",
+    "features": 7,
+    "tables": 0,
+    "files": 9,
+    "stack": "Python / FastAPI",
+    "verdict": "Python web service / API",
+    "pass": true,
+    "notes": "FastAPI greenfield, in-memory"
+  },
+  {
+    "label": "Local \u00b7 Fraud score API",
+    "source": "/Users/prathamsumitchowdhury/Desktop/DATA_IQ_PROJECT_PLACEHOLDER/fraud-detection/Evaluation-cohort/evaluation 2.0/fraud-score-system/service",
+    "features": 5,
+    "tables": 0,
+    "files": 6,
+    "stack": "Python / FastAPI",
+    "verdict": "Python web service / API",
+    "pass": true,
+    "notes": "FastAPI polyglot service"
+  },
+  {
+    "label": "GitHub \u00b7 College-ERP (Django)",
+    "source": "https://github.com/samarth-p/College-ERP.git",
+    "features": 32,
+    "tables": 14,
+    "files": 72,
+    "stack": "Python / Django",
+    "verdict": "Python web service / API",
+    "pass": true,
+    "notes": "Django ORM + urlpatterns"
+  },
+  {
+    "label": "GitHub \u00b7 Ecommerce DBMS",
+    "source": "https://github.com/Saurabh-pec/Ecommerce-Management-DBMS_Project-.git",
+    "features": 18,
+    "tables": 5,
+    "files": 35,
+    "stack": "JavaScript / React, React Router, json-server",
+    "verdict": "Application",
+    "pass": true,
+    "notes": "React + json-server + README entities"
+  },
+  {
+    "label": "GitHub \u00b7 MERN shift manager",
+    "source": "https://github.com/wiseweb-works/mern-employee-shift-manager.git",
+    "features": 24,
+    "tables": 0,
+    "files": 60,
+    "stack": "JavaScript / Express, React",
+    "verdict": "Full-stack web application",
+    "pass": true,
+    "notes": "Express + Mongo-style MERN"
+  },
+  {
+    "label": "GitHub \u00b7 FastAPI full-stack template",
+    "source": "https://github.com/tiangolo/full-stack-fastapi-template.git",
+    "features": 23,
+    "tables": 1,
+    "files": 157,
+    "stack": "JavaScript / React",
+    "verdict": "Application",
+    "pass": true,
+    "notes": "FastAPI + SQLAlchemy + React"
+  },
+  {
+    "label": "GitHub \u00b7 Flask SQLAlchemy app",
+    "source": "https://github.com/maxcountryman/flask-login.git",
+    "features": 3,
+    "tables": 0,
+    "files": 15,
+    "stack": "? / ?",
+    "verdict": "Application",
+    "pass": true,
+    "notes": "Flask auth library"
+  },
+  {
+    "label": "GitHub \u00b7 Django allauth",
+    "source": "https://github.com/pennersr/django-allauth.git",
+    "features": 118,
+    "tables": 10,
+    "files": 1498,
+    "stack": "JavaScript, Python / Django, React, React Router",
+    "verdict": "Full-stack web application",
+    "pass": true,
+    "notes": "Large Django app with ORM + routes"
+  },
+  {
+    "label": "GitHub \u00b7 Node shopping cart",
+    "source": "https://github.com/ivan3123708/fullstack-shopping-cart.git",
+    "features": 13,
+    "tables": 0,
+    "files": 88,
+    "stack": "JavaScript / Express, React, React Router",
+    "verdict": "Full-stack web application",
+    "pass": true,
+    "notes": "Express + React MERN cart"
+  }
+]

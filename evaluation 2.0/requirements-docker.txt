@@ -1,0 +1,6 @@
+# Merged runtime deps for dashboard + 3 FastAPI demo services (Docker / Railway)
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+httpx>=0.27.0
+python-multipart>=0.0.9
+pydantic[email]>=2.7.0

@@ -1,0 +1,12 @@
+# Deploy from this directory (evaluation 2.0) as the Railway service root.
+# Railway dashboard → Settings → Root Directory = evaluation 2.0
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/api/ping"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5

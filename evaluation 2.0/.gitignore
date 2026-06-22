@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Rust
+target/
+
+# Node
+node_modules/
+
+# Agent-generated HTML reports (regenerate with analyze.py)
+*-insight.html
+
+# Local venv inside projects
+fastapi_transactions/venv/
+fraud-score-system/**/venv/

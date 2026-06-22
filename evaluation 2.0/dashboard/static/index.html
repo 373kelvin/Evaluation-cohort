@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evaluation 2.0 — Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <canvas id="three-bg" aria-hidden="true"></canvas>
+  <div class="mesh"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="page-loader" id="page-loader">
+    <div class="loader-ring"></div>
+    <p>Loading command center…</p>
+  </div>
+
+  <header class="header">
+    <div class="brand">
+      <div class="brand-icon"><span class="brand-glow"></span>◈</div>
+      <div>
+        <h1>Evaluation 2.0</h1>
+        <p class="subtitle">AI Agent Command Center</p>
+      </div>
+    </div>
+    <div class="header-stats" id="header-stats">
+      <div class="stat-pill"><span class="stat-label">Tasks</span><span class="stat-value" id="stat-total">—</span></div>
+      <div class="stat-pill accent"><span class="stat-label">Complete</span><span class="stat-value" id="stat-complete">—</span></div>
+      <div class="stat-pill"><span class="stat-label">Progress</span><span class="stat-value" id="stat-progress">—</span></div>
+    </div>
+    <div class="header-actions">
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark/light mode">
+        <span class="theme-icon sun">☀</span>
+        <span class="theme-icon moon">☾</span>
+      </button>
+      <button class="btn btn-ghost" id="btn-refresh" type="button">↻ Refresh</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero-tag">Coding Agent Assessment · Live Demo</p>
+    <h2 class="hero-title">Monitor <em>4 projects</em> · Supervise <em>10 AI agents</em></h2>
+    <p class="hero-desc">Click <strong>👁 Watch Step-by-Step Demo</strong> to see each project validated like a person clicking — ~3 seconds per step. Use <strong>💬 Ask Project Guide</strong> only if you have questions.</p>
+  </section>
+
+  <main class="layout">
+    <section class="panel projects-panel">
+      <div class="panel-head">
+        <h2>Projects</h2>
+        <span class="badge" id="project-count">4 systems</span>
+      </div>
+      <div class="project-grid" id="project-grid"></div>
+    </section>
+
+    <section class="panel guide-panel" id="guide-panel">
+      <div class="panel-head">
+        <h2>Project Guide</h2>
+        <span class="badge" id="guide-badge">Project guide</span>
+      </div>
+      <p class="guide-hint">Ask about this project — walkthroughs, scans, and live service status.</p>
+      <div id="ai-chat-root"><p class="guide-empty">Click <strong>💬 Ask Project Guide</strong> on a project card, or <strong>👁 Watch Step-by-Step Demo</strong> to see it work like a person clicking.</p></div>
+      <div id="walkthrough-panel" class="walkthrough-host" hidden></div>
+      <div class="demo-results-panel" id="demo-results-panel" hidden>
+        <h3 class="demo-results-title">Demo Test Results</h3>
+        <div id="demo-results-body"></div>
+      </div>
+    </section>
+
+    <section class="panel agents-panel">
+      <div class="panel-head">
+        <h2>AI Agents</h2>
+        <span class="badge">B1–B4 · A1–A6</span>
+      </div>
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="52" />
+          <circle class="ring-fg" id="ring-fg" cx="60" cy="60" r="52" />
+        </svg>
+        <span class="ring-label" id="ring-label">0%</span>
+      </div>
+      <div class="agent-grid" id="agent-grid"></div>
+    </section>
+
+    <section class="panel actions-panel">
+      <div class="panel-head">
+        <h2>Quick Actions &amp; Demo Output</h2>
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-primary" type="button" data-action="run-tests">🧪 Run All Automated Tests (B3)</button>
+        <button class="btn btn-secondary" type="button" data-action="inventory-all">📋 Scan Every Project (B1)</button>
+        <button class="btn btn-secondary" type="button" data-action="analyze-all">🗺 Map All API Routes (B2)</button>
+        <button class="btn btn-accent" type="button" data-action="demo-fintech">🏦 Full Fintech Scan Demo</button>
+      </div>
+      <div class="terminal" id="terminal">
+        <div class="terminal-bar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span id="terminal-label">agent output</span>
+        </div>
+        <pre id="terminal-body">Ready — click Run Demo Tests on a project, or use Quick Actions above.</pre>
+      </div>
+    </section>
+
+    <section class="panel outputs-panel">
+      <div class="panel-head">
+        <h2>Deliverables</h2>
+        <span class="badge">outputs/</span>
+      </div>
+      <ul class="output-list" id="output-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Evaluation Cohort · <a href="https://github.com/373kelvin/Evaluation-cohort">GitHub</a></span>
+    <span id="last-updated">—</span>
+    <span class="footer-build" id="footer-build" title="__BUILD_FULL__">Build __BUILD_DISPLAY__</span>
+  </footer>
+
+  <button type="button" id="dev-badge" class="dev-badge" title="__BUILD_FULL__ — triple-click for dev log">__BUILD_DISPLAY__</button>
+
+  <script src="/static/dev-console.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="/static/three-scene.js"></script>
+  <script src="/static/ai-knowledge.js"></script>
+  <script src="/static/ai-chat.js"></script>
+  <script src="/static/open-links.js"></script>
+  <script src="/static/demo-walkthrough.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

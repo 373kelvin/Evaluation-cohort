@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>service — Project Insight</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+<style>
+:root{--bg:#16161c;--panel:#20202a;--panel2:#282834;--text:#e8e8f0;--muted:#9a9aac;--accent:#a98bff;--border:#33333f;--info:#4aa3ff;--tip:#36c692;--warn:#f0a33c;--danger:#ff6b6b}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,Segoe UI,Roboto,Arial,sans-serif;display:flex}
+a{color:var(--accent);text-decoration:none} .muted{color:var(--muted)}
+nav{position:sticky;top:0;height:100vh;width:210px;flex:0 0 210px;background:var(--panel);border-right:1px solid var(--border);padding:18px 12px;overflow:auto}
+nav .brand{font-weight:700} nav .tag{color:var(--muted);font-size:11px;margin-bottom:12px}
+nav a{display:block;padding:6px 10px;border-radius:8px;color:var(--text);font-size:13.5px} nav a:hover{background:var(--panel2)}
+main{flex:1;max-width:960px;margin:0 auto;padding:28px 38px 120px} h1{font-size:28px;margin:0 0 4px}
+.sub{color:var(--muted);margin-bottom:18px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 16px;min-width:90px}
+.stat b{font-size:22px;display:block} .stat span{color:var(--muted);font-size:12px}
+section{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin:0 0 18px}
+section h2{margin-top:0;font-size:20px} h3{font-size:15px;color:var(--accent);margin:18px 0 8px}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13.5px} th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top} th{color:var(--muted)}
+code{background:#101015;padding:2px 6px;border-radius:6px;font:12.5px ui-monospace,Consolas,monospace;color:#d8c7ff}
+.callout{border-left:4px solid var(--info);background:#1c2632;border-radius:8px;padding:10px 14px;margin:10px 0}
+.c-tip{border-color:var(--tip);background:#172a24} .c-warn{border-color:var(--warn);background:#2c2518} .c-danger{border-color:var(--danger);background:#2c1d1d}
+.pill{font-size:11px;padding:2px 8px;border-radius:20px;background:#2c2518;color:var(--warn);border:1px solid var(--warn)}
+#graph{height:440px;background:#101015;border:1px solid var(--border);border-radius:10px}
+.mermaid{background:#101015;border-radius:10px;padding:16px;text-align:center}
+.feat{border:1px solid var(--border);border-radius:10px;padding:10px 13px;margin:7px 0;background:var(--panel2)}
+.feat .h{font-weight:600;display:flex;justify-content:space-between;gap:8px} .feat .f{font-size:12px;color:var(--muted)}
+.role{font-size:10px;padding:2px 8px;border-radius:20px;text-transform:uppercase}
+.r-student{background:#16314a;color:#8cc6ff} .r-admin{background:#3a2e16;color:#f3c684} .r-auth{background:#2a2148;color:#c5b3ff} .r-gen{background:#16314a;color:#9fdcc6}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:22px}
+</style></head><body>
+<nav><div class="brand">🔍 Insight</div><div class="tag">service</div>
+<a href="#ov">Overview</a><a href="#arch-s">Architecture</a><a href="#comp-s">Components</a><a href="#feat">Features</a><a href="#exec-s">Flow</a><a href="#graph-s">Graph</a><a href="#er-s">ER Diagram</a><a href="#ent">Entities</a><a href="#rel">Relationships</a><a href="#find">Findings</a></nav>
+<main>
+<h1>service</h1><div class="sub">Python web service / API</div>
+<div class="stats"><div class="stat"><b>0</b><span>tables</span></div><div class="stat"><b>5</b><span>features</span></div><div class="stat"><b>4</b><span>source files</span></div></div>
+
+<section id="ov"><h2>Overview</h2>
+<div class="callout"><b>Stack</b><br>Languages: Python<br>Frameworks: FastAPI<br>Data layer: —<br>Database: —</div>
+<h3>How to run</h3><p class='muted'>Run command could not be determined from the code.</p>
+<h3>Entry points</h3><p><code>app/main.py</code></p></section>
+<section id="arch-s"><h2>System architecture</h2><p class="muted">Components found in the code and how they connect.</p><div class="mermaid">flowchart LR
+    User["User"]
+    API["Backend: FastAPI"]
+    User -->|"HTTP"| API</div></section>
+<section id="comp-s"><h2>Components / modules</h2><table><tr><th>Area</th><th>Role</th><th>Files</th></tr><tr><td><code>app</code></td><td>module</td><td>2</td></tr><tr><td><code>(root)</code></td><td>module</td><td>1</td></tr><tr><td><code>tests</code></td><td>Tests</td><td>1</td></tr></table></section>
+<section id="feat"><h2>Features</h2><h3>General <small style='color:var(--muted)'>(5)</small></h3><div class='feat'><div class='h'><span>GET /health</span><span class='role r-gen'>general</span></div><div class='f'>FastAPI route handler — <code>app/main.py:107</code></div></div><div class='feat'><div class='h'><span>POST /transactions</span><span class='role r-gen'>general</span></div><div class='f'>FastAPI route handler — <code>app/main.py:61</code></div></div><div class='feat'><div class='h'><span>GET /transactions/pending</span><span class='role r-gen'>general</span></div><div class='f'>FastAPI route handler — <code>app/main.py:80</code></div></div><div class='feat'><div class='h'><span>POST /transactions/{txn_id}/score</span><span class='role r-gen'>general</span></div><div class='f'>FastAPI route handler — <code>app/main.py:86</code></div></div><div class='feat'><div class='h'><span>GET /transactions/{txn_id}</span><span class='role r-gen'>general</span></div><div class='f'>FastAPI route handler — <code>app/main.py:98</code></div></div></section>
+
+<section id="graph-s"><h2>Interactive data-model graph</h2><p class="muted">Drag nodes, scroll to zoom. Dashed edges are inferred (not declared foreign keys).</p><div id="graph"></div></section>
+<section id="er-s"><h2>ER diagram</h2><div class="mermaid">erDiagram
+  EMPTY {
+    string none
+  }</div></section>
+<section id="ent"><h2>Entities</h2><p class='muted'>No tables found.</p></section>
+<section id="rel"><h2>Relationships</h2><table><tr><th>Parent → Child</th><th>Key</th><th>Type</th><th>Source</th></tr><tr><td colspan=4 class='muted'>No relationships found.</td></tr></table></section>
+<section id="find"><h2>Findings &amp; notes</h2><ul><li>No notable issues flagged.</li></ul></section>
+<footer>Generated by Project Insight · static analysis, no AI</footer>
+</main>
+<script>
+mermaid.initialize({startOnLoad:true,theme:'dark',securityLevel:'loose',themeVariables:{primaryColor:'#282834',primaryTextColor:'#e8e8f0',lineColor:'#a98bff',fontSize:'13px'}});
+var nodes=new vis.DataSet([]);var edges=new vis.DataSet([]);
+new vis.Network(document.getElementById('graph'),{nodes:nodes,edges:edges},{nodes:{font:{color:'#fff',size:14},borderWidth:0,margin:12,shapeProperties:{borderRadius:8}},edges:{arrows:'to',smooth:{type:'dynamic'},font:{size:12,background:'#101015',color:'#c9c9d6'}},physics:{barnesHut:{springLength:170,gravitationalConstant:-9000},stabilization:{iterations:200}},interaction:{hover:true}});
+</script></body></html>

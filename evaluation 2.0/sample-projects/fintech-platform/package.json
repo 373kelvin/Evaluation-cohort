@@ -1,0 +1,9 @@
+{
+  "name": "fintech-gateway",
+  "version": "2.0.0",
+  "description": "Node.js API gateway for fintech platform demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

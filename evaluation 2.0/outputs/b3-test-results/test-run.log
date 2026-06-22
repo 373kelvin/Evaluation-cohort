@@ -1,0 +1,48 @@
+=== Evaluation 2.0 — Test Run ===
+Date: 2026-06-22 06:08:17 UTC
+
+--- B4: fastapi_transactions (pytest) ---
+Framework: pytest
+Config: (defaults, no pytest.ini)
+Test file: fastapi_transactions/tests/test_main.py
+Command: cd fastapi_transactions && pytest tests/ -v
+
+============================= test session starts ==============================
+platform darwin -- Python 3.13.11, pytest-9.1.0, pluggy-1.6.0 -- /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+cachedir: .pytest_cache
+rootdir: /Users/prathamsumitchowdhury/Desktop/DATA_IQ_PROJECT_PLACEHOLDER/fraud-detection/Evaluation-cohort/evaluation 2.0/fastapi_transactions
+plugins: anyio-4.12.1
+collecting ... collected 8 items
+
+tests/test_main.py::test_health_check PASSED                             [ 12%]
+tests/test_main.py::test_list_transactions_empty PASSED                  [ 25%]
+tests/test_main.py::test_create_credit_transaction PASSED                [ 37%]
+tests/test_main.py::test_create_debit_transaction PASSED                 [ 50%]
+tests/test_main.py::test_balance_reflects_credits_and_debits PASSED      [ 62%]
+tests/test_main.py::test_rejects_non_positive_amount PASSED              [ 75%]
+tests/test_main.py::test_rejects_invalid_transaction_type PASSED         [ 87%]
+tests/test_main.py::test_get_single_transaction_and_404 PASSED           [100%]
+
+============================== 8 passed in 0.34s ===============================
+
+--- A3: fraud-score-system/service (pytest) ---
+Framework: pytest
+Test file: fraud-score-system/service/tests/test_service.py
+Command: cd fraud-score-system/service && pytest -q
+
+....                                                                     [100%]
+4 passed in 0.28s
+
+--- A3: fraud-score-system/engine (cargo test) ---
+Framework: cargo test (Rust)
+Test file: inline in engine/src/main.rs
+Command: cd fraud-score-system/engine && cargo test
+
+[SKIP] cargo not installed — install Rust toolchain to run engine tests
+
+--- A3: integration test ---
+Test file: fraud-score-system/integration/test_integration.py
+Command: cd fraud-score-system && pytest -q integration/test_integration.py
+
+s                                                                        [100%]
+1 skipped in 0.29s

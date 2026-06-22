@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Room</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="/static/project.css" />
+</head>
+<body class="room-page" id="body-theme">
+  <canvas id="room-bg" aria-hidden="true"></canvas>
+  <div class="mesh"></div>
+  <div class="grid-overlay"></div>
+
+  <div class="room-shell">
+    <header class="room-top-bar panel glass">
+      <a class="back-link" href="/">← Command Center</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon sun">☀</span>
+        <span class="theme-icon moon">☾</span>
+      </button>
+    </header>
+
+    <header class="room-hero panel glass">
+      <div class="hero-icon" id="hero-icon">◈</div>
+      <div class="hero-text">
+        <p class="room-eyebrow" id="theme-label">—</p>
+        <h1 id="project-name">Loading…</h1>
+        <p class="room-sub" id="project-sub"></p>
+        <p class="status-pill" id="status-line"></p>
+      </div>
+    </header>
+
+    <div class="room-grid">
+      <div class="room-main">
+        <section class="panel glass highlight-block">
+          <h2>👁 Interactive Demo</h2>
+          <p class="plain muted">Step-by-step validation — each step stays ~3 seconds. Results appear below with a report viewer when available.</p>
+          <div class="demo-btn-row">
+            <button type="button" class="btn btn-demo btn-primary-action" id="btn-walkthrough">👁 Watch Step-by-Step Demo</button>
+            <button type="button" class="btn btn-demo btn-secondary-action" id="btn-quick">⚡ Quick Validation Check</button>
+          </div>
+          <div id="walkthrough-panel" class="walkthrough-host" hidden></div>
+          <div id="demo-results" class="demo-results" hidden></div>
+        </section>
+
+        <section class="panel glass" id="scan-external-block" hidden>
+          <h2>🔗 Scan Any Repo</h2>
+          <p class="plain muted">Project Insight accepts a <strong>GitHub link</strong> or <strong>.zip upload</strong> (same as GitHub “Download ZIP”). Runs B1 inventory + B2 HTML report.</p>
+          <form class="scan-form" id="github-scan-form">
+            <input type="url" id="github-url" placeholder="https://github.com/owner/repo (.git OK)" autocomplete="off" />
+            <button type="submit" class="btn btn-accent-sm">Scan GitHub</button>
+          </form>
+          <div class="scan-upload-row">
+            <label class="btn btn-secondary-sm upload-label" id="zip-drop-zone">
+              Upload .zip
+              <input type="file" id="zip-upload" accept=".zip,application/zip" hidden />
+            </label>
+            <span class="muted" id="upload-name">Drop a zip here or click Upload</span>
+          </div>
+          <div id="scan-progress-panel" class="scan-progress-host" hidden></div>
+        </section>
+
+        <section class="panel glass actions-block">
+          <h2>Run It Yourself</h2>
+          <p class="plain muted" id="start-hint"></p>
+          <div id="open-links" class="open-links-host"></div>
+          <h3 class="sub-heading">Actions</h3>
+          <div class="action-grid" id="actions"></div>
+          <pre class="cmd-box" id="start-cmd" hidden></pre>
+        </section>
+
+        <section class="panel glass report-panel" id="report-panel" hidden>
+          <div class="report-toolbar">
+            <h2>📊 <span id="report-title">Insight Report</span></h2>
+            <div class="report-actions">
+              <button type="button" class="btn btn-sm btn-secondary" id="report-fullscreen">Fullscreen</button>
+              <button type="button" class="btn btn-sm btn-secondary" id="report-newtab">Open in tab</button>
+              <button type="button" class="btn btn-sm btn-ghost" id="report-close">Close</button>
+            </div>
+          </div>
+          <iframe id="report-frame" title="Insight report" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+        </section>
+      </div>
+
+      <aside class="room-aside">
+        <section class="panel glass">
+          <h2>About</h2>
+          <p class="plain" id="summary"></p>
+        </section>
+
+        <section class="panel glass">
+          <h2>How it works</h2>
+          <ol class="flow" id="flow"></ol>
+        </section>
+
+        <section class="panel glass">
+          <h2>📂 Your Reports</h2>
+          <p class="plain muted">Click to view any generated HTML diagram in the panel below.</p>
+          <div class="report-gallery" id="report-gallery"></div>
+        </section>
+
+        <section class="panel glass">
+          <h2>AI Agents</h2>
+          <div class="agent-cards" id="agent-cards"></div>
+        </section>
+
+        <details class="panel glass guide-details">
+          <summary>💬 Project guide</summary>
+          <div id="ai-chat-root"></div>
+        </details>
+
+        <section class="panel glass log-block">
+          <h2>Activity</h2>
+          <pre class="log" id="log">Pick a button to start.</pre>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <button type="button" id="dev-badge" class="dev-badge" title="__BUILD_FULL__ — triple-click for dev log">__BUILD_DISPLAY__</button>
+
+  <script src="/static/dev-console.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="/static/three-scene.js"></script>
+  <script src="/static/ai-knowledge.js"></script>
+  <script src="/static/ai-chat.js"></script>
+  <script src="/static/open-links.js"></script>
+  <script src="/static/scan-progress.js"></script>
+  <script src="/static/report-viewer.js"></script>
+  <script src="/static/demo-walkthrough.js"></script>
+  <script src="/static/project.js"></script>
+</body>
+</html>
